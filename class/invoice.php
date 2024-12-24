@@ -1,4 +1,3 @@
-
 <?php 
 
 class Invoice{
@@ -16,7 +15,7 @@ class Invoice{
     }
 
     public function displayINvoice(){
-        
+
     }
 
 }

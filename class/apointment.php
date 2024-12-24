@@ -1,4 +1,5 @@
-<?php 
+<?php
+include '../config/dbconnection'; 
 
 class Apointment{
 
@@ -16,15 +17,32 @@ class Apointment{
     $this -> status = $status;
 
    }
-    
-   public function getDateApointment(){
-      echo $this-> date_apointment;
+
+
+   public function getDateApointment($id_patient){
+
+      global $connect;
+      $stmt = $connect -> prepare("SELECT date_apoin FROM appointment WHERE id_patient = :id_patient");
+      $stmt -> bindParam(':id_patient',$id_patient);
+      $stmt -> execute();
+      
+      $stmt = null;
    }
 
-   public function updateStatus($newstatus){
 
-    return $this->status = $newstatus;
 
+   public function updateStatus($id_apoin,$newstatus){
+
+    global $connect;
+
+    $stmt = $connect -> prepare("UPDATE appointment 
+    SET status = :status
+    WHERE id_apoin = :id_apoin");
+    $stmt -> bindParam(':status',$newstatus,PDO::PARAM_STR);
+    $stmt -> bindParam(':id_apoin',$id_apoin,PDO::PARAM_STR);
+    $stmt -> execute();
+ 
+    $stmt = null;
    } 
 
 
