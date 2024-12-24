@@ -1,3 +1,7 @@
+<?php 
+//  $user1= new user();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
